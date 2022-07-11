@@ -12,7 +12,7 @@ export const searchAddressFromPostalcode = (code: string) => async (
   if (!isCompletePostalcode(code)) return;
 
   const res = await fetch(
-    `https://apis.postcode-jp.com/api/v3/postcodes?apikey=hhXOV66nAxOht53U9y3X1FoMo3g1Rv751XBJchm&postcode=${code}`
+    `https://apis.postcode-jp.com/api/v3/postcodes?apikey=hhXOV66nAxOht53U9y3X1FoMo3g1Rv751XBJchm&postcode=${sanitizePostalcode(code)}`
   );
   const result = await res.json();
 

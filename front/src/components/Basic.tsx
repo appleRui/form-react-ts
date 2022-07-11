@@ -10,7 +10,7 @@ import {
   FormLabel,
   RadioGroup,
   FormControlLabel,
-  Radio
+  Radio,
 } from "@material-ui/core";
 import useStyles from "./styles";
 
