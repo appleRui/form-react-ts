@@ -6,7 +6,13 @@ const init: Profile = {
   name: "",
   description: "",
   birthday: "",
-  gender: ""
+  gender: "",
+  address: {
+    postalcode: "",
+    prefecture: "",
+    city: "",
+    restAddress: ""
+  }
 };
 
 const profileReducer = reducerWithInitialState(init).case(
@@ -15,6 +21,16 @@ const profileReducer = reducerWithInitialState(init).case(
     ...state,
     ...payload
   })
-);
+).case(profileActions.setAddress, (state, payload) => ({
+  ...state,
+  address: { 
+    ...state.address, 
+    ...payload 
+  }
+}))
+.case(profileActions.searchAddress.done, (state, payload) => ({
+  ...state,
+  address: { ...state.address, ...payload.result }
+}));
 
 export default profileReducer;
